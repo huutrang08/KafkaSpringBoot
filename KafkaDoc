@@ -1,0 +1,28 @@
+// Check tin nhắn
+.\bin\windows\kafka-console-consumer.bat --topic ExampleJson --from-beginning --bootstrap-server localhost:9092
+
+
+// Check lít topic
+.\bin\windows\kafka-topics.bat \ --bootstrap-server localhost:9092 \ --list
+
+// Start zookeeper
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+// Start kafka
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+// kiểm tra sao lưu qua các pation con
+0 : even có thể bị mất nếu nhiều
+1 : lưu vào lead trả về thành công luôn
+-1: Lưu thành công vào leader và flower
+spring.kafka.producer.acks = -1
+
+// Gửi lại phải kèm check trùng event
+spring.kafka.producer.retries = 1
+spring.kafka.producer.properties.[enable.idempotence] = true
+// số lượng request tối đa trên một connect
+spring.kafka.producer.properties.[max.in.flight.requests.per.connection] = 5
+
+
+
