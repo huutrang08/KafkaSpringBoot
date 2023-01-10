@@ -14,4 +14,9 @@ public class KafkaDatabaseConsumer {
         LOGGER.info(String.format("Message received -> %s",message));
     }
 
+    @KafkaListener(topics = "Json")
+    public void consumer1(String message){
+        LOGGER.info(String.format("Message received -> %s",message));
+    }
+
 }
