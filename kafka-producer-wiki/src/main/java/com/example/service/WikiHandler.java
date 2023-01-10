@@ -53,7 +53,6 @@ public class WikiHandler implements EventHandler {
             }
         });
      }
-
     @Override
     public void onComment(String s) throws Exception {
 
